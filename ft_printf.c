@@ -6,7 +6,7 @@
 /*   By: ayda <ayda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 19:21:46 by ayda              #+#    #+#             */
-/*   Updated: 2025/11/09 20:20:35 by ayda             ###   ########.fr       */
+/*   Updated: 2025/11/09 21:37:24 by ayda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,22 @@ int	ft_putchar(int c)
 	return (1);
 }
 
-int ft_putstr(char *s){
-    int i=0;
-if(s == NULL){
-    write(1,"(null)",6);
-    return 6;
-}
-    while(s[i]){
-        write(1,&s[i],1);
-        i++;
-    }
-    return i;
+int	ft_putstr(char *s)
+{
+	int	i;
+
+	i = 0;
+	if (s == NULL)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (s[i])
+	{
+		write(1, &s[i], 1);
+		i++;
+	}
+	return (i);
 }
 
 static int	do_convesrion(va_list bag, const char format)
