@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prt_number.c                                    :+:      :+:    :+:   */
+/*   ft_prt_unsigend.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ayda <ayda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/09 21:04:44 by ayda              #+#    #+#             */
-/*   Updated: 2025/11/09 22:17:00 by ayda             ###   ########.fr       */
+/*   Created: 2025/11/09 21:39:19 by ayda              #+#    #+#             */
+/*   Updated: 2025/11/09 22:24:18 by ayda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_n_len(int n)
+static int	len_number(unsigned int n)
 {
 	int	digits;
 
 	digits = 0;
-	if (n <= 0)
+	if (n == 0)
 		digits = 1;
 	while (n != 0)
 	{
@@ -27,48 +27,35 @@ static int	ft_n_len(int n)
 	return (digits);
 }
 
-static char	*fill_str(char *str, unsigned int n, int len)
-{
-	while (n > 0)
-	{
-		str[len] = n % 10 + '0';
-		len--;
-		n = n / 10;
-	}
-	return (str);
-}
-
-static char	*ft_itoa(int n)
+static char	*ft_itoa_uns(unsigned int n)
 {
 	int		len;
-	int		i;
 	char	*str;
 
-	len = ft_n_len(n);
-	i = 0;
+	len = len_number(n);
 	str = (char *)malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
 	str[len--] = '\0';
 	if (n == 0)
 		str[0] = '0';
-	if (n < 0)
+	while (n > 0)
 	{
-		n = n * -1;
-		str[0] = '-';
+		str[len] = n % 10 + '0';
+		n = n / 10;
+		len--;
 	}
-	str = fill_str(str, n, len);
 	return (str);
 }
 
-int	ft_prt_number(int n)
+int	t_prt_unsigend(unsigned int number)
 {
-	char	*number;
 	int		count;
+	char	*num;
 
 	count = 0;
-	number = ft_itoa(n);
-	count += ft_putstr(number);
-	free(number);
-	return (count);
+	num = ft_itoa_uns(number);
+	count += ft_putstr(num);
+	free(num);
+	return (num);
 }
