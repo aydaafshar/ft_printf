@@ -6,13 +6,13 @@
 /*   By: ayda <ayda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 21:04:44 by ayda              #+#    #+#             */
-/*   Updated: 2025/11/09 22:17:00 by ayda             ###   ########.fr       */
+/*   Updated: 2025/11/13 12:50:46 by ayda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_n_len(int n)
+static int	ft_n_len(long n)
 {
 	int	digits;
 
@@ -27,7 +27,7 @@ static int	ft_n_len(int n)
 	return (digits);
 }
 
-static char	*fill_str(char *str, unsigned int n, int len)
+static char	*fill_str(char *str, unsigned long n, int len)
 {
 	while (n > 0)
 	{
@@ -38,14 +38,15 @@ static char	*fill_str(char *str, unsigned int n, int len)
 	return (str);
 }
 
-static char	*ft_itoa(int n)
+static char	*ft_itoa(int nb)
 {
-	int		len;
-	int		i;
-	char	*str;
+	long			n;
+	unsigned long	unb;
+	int				len;
+	char			*str;
 
+	n = (long)nb;
 	len = ft_n_len(n);
-	i = 0;
 	str = (char *)malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
@@ -54,10 +55,12 @@ static char	*ft_itoa(int n)
 		str[0] = '0';
 	if (n < 0)
 	{
-		n = n * -1;
+		unb = (unsigned long)(-n);
 		str[0] = '-';
 	}
-	str = fill_str(str, n, len);
+	else
+		unb = (unsigned long)(n);
+	str = fill_str(str, unb, len);
 	return (str);
 }
 
@@ -67,6 +70,8 @@ int	ft_prt_number(int n)
 	int		count;
 
 	count = 0;
+	if (n == -2147483648)
+		return ((write(1, "-2147483648", 11)));
 	number = ft_itoa(n);
 	count += ft_putstr(number);
 	free(number);

@@ -6,13 +6,13 @@
 /*   By: ayda <ayda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:42:54 by ayda              #+#    #+#             */
-/*   Updated: 2025/11/12 12:00:06 by ayda             ###   ########.fr       */
+/*   Updated: 2025/11/13 14:22:51 by ayda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_len_ptr(uintptr_t ptr)
+static int	ft_len_ptr(unsigned long long ptr)
 {
 	int	digits;
 
@@ -27,31 +27,25 @@ static int	ft_len_ptr(uintptr_t ptr)
 	return (digits);
 }
 
-static void	ft_prt_ptr(uintptr_t ptr)
+static void	ft_prt_ptr(unsigned long long ptr)
 {
-	char	*hex_digits;
+	static char	*hex_digits;
 
 	hex_digits = "0123456789abcdef";
 	if (ptr >= 16)
 		ft_prt_ptr(ptr / 16);
-	else
-	{
-		write(1, &hex_digits[ptr % 16], 1);
-	}
+	write(1, &hex_digits[ptr % 16], 1);
 }
 
-int	ft_prt_pointer(uintptr_t ptr)
+int	ft_prt_pointer(void *p)
 {
-	int	count;
+	int					count;
+	unsigned long long	ptr;
 
 	count = 0;
+	ptr = (unsigned long long)(uintptr_t)p;
 	count += write(1, "0x", 2);
-	if (ptr == 0)
-		count += write(1, "0", 1);
-	else
-	{
-		ft_prt_ptr(ptr);
-		count += ft_len_ptr(ptr);
-	}
+	ft_prt_ptr(ptr);
+	count += ft_len_ptr(ptr);
 	return (count);
 }

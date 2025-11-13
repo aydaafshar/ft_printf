@@ -6,7 +6,7 @@
 /*   By: ayda <ayda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 21:39:19 by ayda              #+#    #+#             */
-/*   Updated: 2025/11/09 22:24:18 by ayda             ###   ########.fr       */
+/*   Updated: 2025/11/13 14:12:36 by ayda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	len_number(unsigned int n)
 
 	digits = 0;
 	if (n == 0)
-		digits = 1;
+		return (1);
 	while (n != 0)
 	{
 		n = n / 10;
@@ -48,7 +48,7 @@ static char	*ft_itoa_uns(unsigned int n)
 	return (str);
 }
 
-int	t_prt_unsigend(unsigned int number)
+int	ft_prt_unsigend(unsigned int number)
 {
 	int		count;
 	char	*num;
@@ -57,5 +57,5 @@ int	t_prt_unsigend(unsigned int number)
 	num = ft_itoa_uns(number);
 	count += ft_putstr(num);
 	free(num);
-	return (num);
+	return (count);
 }

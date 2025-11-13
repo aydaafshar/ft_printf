@@ -6,7 +6,7 @@
 /*   By: ayda <ayda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 21:59:40 by ayda              #+#    #+#             */
-/*   Updated: 2025/11/12 11:53:19 by ayda             ###   ########.fr       */
+/*   Updated: 2025/11/13 13:07:05 by ayda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int	ft_len_hx(unsigned int n)
 	int	count;
 
 	count = 0;
+	if (n == 0)
+		return (1);
 	while (n != 0)
 	{
 		n = n / 16;
