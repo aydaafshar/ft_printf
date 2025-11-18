@@ -6,7 +6,7 @@
 /*   By: ayda <ayda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 21:04:44 by ayda              #+#    #+#             */
-/*   Updated: 2025/11/13 12:50:46 by ayda             ###   ########.fr       */
+/*   Updated: 2025/11/18 22:57:08 by ayda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_prt_number(int n)
 
 	count = 0;
 	if (n == -2147483648)
-		return ((write(1, "-2147483648", 11)));
+		return (ft_putstr("-2147483648"));
 	number = ft_itoa(n);
 	count += ft_putstr(number);
 	free(number);

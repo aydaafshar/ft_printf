@@ -6,7 +6,7 @@
 /*   By: ayda <ayda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 21:59:40 by ayda              #+#    #+#             */
-/*   Updated: 2025/11/13 13:07:05 by ayda             ###   ########.fr       */
+/*   Updated: 2025/11/18 22:52:21 by ayda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,6 @@ static void	ft_prt_hex_put(unsigned int n, const char format)
 
 int	ft_prt_hex(unsigned int n, const char format)
 {
-	if (n == 0)
-		return (write(1, "0", 1));
 	ft_prt_hex_put(n, format);
 	return (ft_len_hx(n));
 }

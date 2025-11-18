@@ -6,7 +6,7 @@
 /*   By: ayda <ayda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 19:21:46 by ayda              #+#    #+#             */
-/*   Updated: 2025/11/13 14:45:12 by ayda             ###   ########.fr       */
+/*   Updated: 2025/11/18 22:35:17 by ayda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,17 +89,29 @@ int	ft_printf(const char *format, ...)
 
 // int	main(void)
 // {
-// 	int		i;
-// 	int		c;
-// 	char	ch;
-// 	char	*p;
-// 	char	*str;
+// 	int				i;
+// 	int				c;
+// 	char			ch;
+// 	char			*p;
+// 	char			*str;
+// 	char			*null_str;
+// 	unsigned int	u;
+// 	unsigned int	u_max;
+// 	int				i_min;
+// 	int				i_max;
 
+// 	null_str = NULL;
+// 	u = 123;
+// 	u_max = UINT64_MAX;
+// 	i_min = INT64_MIN;
+// 	i_max = INT64_MAX;
 // 	i = 1;
 // 	c = 'a';
 // 	ch = 'd';
 // 	p = &ch;
 // 	str = "ayda";
+
+    
 // 	ft_printf("p :%p\n", p);
 // 	ft_printf("d : %d\n", i);
 // 	ft_printf("c: %c\n", c);
