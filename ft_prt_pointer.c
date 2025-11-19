@@ -6,7 +6,7 @@
 /*   By: ayda <ayda@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/12 11:42:54 by ayda              #+#    #+#             */
-/*   Updated: 2025/11/13 14:22:51 by ayda             ###   ########.fr       */
+/*   Updated: 2025/11/18 23:14:29 by ayda             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ int	ft_prt_pointer(void *p)
 	unsigned long long	ptr;
 
 	count = 0;
-	ptr = (unsigned long long)(uintptr_t)p;
+	if (p == NULL)
+		return (ft_putstr("(nil)"));
+	ptr = (unsigned long long)p;
 	count += write(1, "0x", 2);
 	ft_prt_ptr(ptr);
 	count += ft_len_ptr(ptr);
