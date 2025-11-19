@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayda <ayda@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ayafshar <ayafshar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 19:21:46 by ayda              #+#    #+#             */
-/*   Updated: 2025/11/18 22:35:17 by ayda             ###   ########.fr       */
+/*   Updated: 2025/11/19 17:52:48 by ayafshar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,24 @@ static int	do_convesrion(va_list *bag, const char format)
 		return (ft_prt_pointer(va_arg(*bag, void *)));
 	else if (format == 'x' || format == 'X')
 		return (ft_prt_hex(va_arg(*bag, unsigned int), format));
-	return (0);
+	return (-1);
+}
+
+static int	format_handling(const char *format, int *i, va_list *bag)
+{
+	int	count;
+
+	if (!format[*i + 1])
+		return (0);
+	count = do_convesrion(bag, format[*i + 1]);
+	if (count == -1)
+	{
+		write(1, "%", 1);
+		write(1, &format[*i + 1], 1);
+		count = 2;
+	}
+	(*i)++;
+	return (count);
 }
 
 int	ft_printf(const char *format, ...)
@@ -70,15 +87,7 @@ int	ft_printf(const char *format, ...)
 	while (format[i])
 	{
 		if (format[i] == '%')
-		{
-			if (format[i + 1])
-			{
-				count += do_convesrion(&bag, format[i + 1]);
-				i++;
-			}
-			else
-				break ;
-		}
+			count += format_handling(format, &i, &bag);
 		else
 			count += write(1, &format[i], 1);
 		i++;
@@ -86,35 +95,3 @@ int	ft_printf(const char *format, ...)
 	va_end(bag);
 	return (count);
 }
-
-// int	main(void)
-// {
-// 	int				i;
-// 	int				c;
-// 	char			ch;
-// 	char			*p;
-// 	char			*str;
-// 	char			*null_str;
-// 	unsigned int	u;
-// 	unsigned int	u_max;
-// 	int				i_min;
-// 	int				i_max;
-
-// 	null_str = NULL;
-// 	u = 123;
-// 	u_max = UINT64_MAX;
-// 	i_min = INT64_MIN;
-// 	i_max = INT64_MAX;
-// 	i = 1;
-// 	c = 'a';
-// 	ch = 'd';
-// 	p = &ch;
-// 	str = "ayda";
-
-    
-// 	ft_printf("p :%p\n", p);
-// 	ft_printf("d : %d\n", i);
-// 	ft_printf("c: %c\n", c);
-// 	ft_printf("s: %s\n", str);
-// 	return (0);
-// }

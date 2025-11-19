@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayda <ayda@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ayafshar <ayafshar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 20:53:06 by ayda              #+#    #+#             */
-/*   Updated: 2025/11/18 23:05:00 by ayda             ###   ########.fr       */
+/*   Updated: 2025/11/19 15:02:31 by ayafshar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
+# include <limits.h>
 # include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
